@@ -3,8 +3,10 @@
 #include <initializer_list>
 #include <ios>
 #include <iostream>
+#include <span>
 #include <string>
 #include <type_traits>
+#include <vector>
 
 class IntIter {
 public:
@@ -41,6 +43,7 @@ private:
 };
 
 struct BindTest {
+
   int a = 42;
   std::string b = "hello structured binding";
 };
@@ -88,7 +91,10 @@ auto main(int argc, char **argv) -> int {
   for (auto e : fix_int_vector) {
     std::cout << e << std::endl;
   }
-
+  std::vector<BindTest> bt{{11, "hello"}, {7, "c++"}};
+  for (const auto &[x, y] : bt) {
+    std::cout << "x=" << x << " y=" << y << std::endl;
+  }
   // BindTest bt;
   // const auto [x, y] = bt;
   // std::cout << "&bt.a=" << &bt.a << " &x=" << &x << std::endl;
